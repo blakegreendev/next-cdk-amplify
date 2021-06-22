@@ -22,9 +22,12 @@
   },
   "dependencies": {
     "@aws-cdk/aws-amplify": "1.103.0",
+    "@aws-cdk/aws-cloudwatch": "1.103.0",
     "@aws-cdk/aws-codebuild": "1.103.0",
     "@aws-cdk/aws-cognito": "1.103.0",
     "@aws-cdk/aws-iam": "1.103.0",
+    "@aws-cdk/aws-lambda": "1.103.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.103.0",
     "@aws-cdk/aws-ses": "1.103.0",
     "@aws-cdk/core": "1.103.0",
     "source-map-support": "^0.5.16"
