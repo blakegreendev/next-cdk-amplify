@@ -22,7 +22,7 @@ export class InfraStack extends Stack {
     const emailAddress = "blakegreen@msn.com"
     const createAuthFunction = new NodejsFunction(this, 'CreateAuthFunction', {
       entry: 'functions/passwordless/create-auth-challenge.ts', 
-      handler: 'CreateAuthChallengeTriggerHandler', 
+      handler: 'handler', 
       role: authRole,
       environment: {
         'SES_FROM_ADDRESS':emailAddress
@@ -30,7 +30,7 @@ export class InfraStack extends Stack {
     });
     const preSignUpFunction = new NodejsFunction(this, 'PreSignUpFunction', {
       entry: 'functions/passwordless/pre-signup.ts', 
-      handler: 'PreSignUpTriggerHandler', 
+      handler: 'handler', 
       role: authRole,
       environment: {
         'SES_FROM_ADDRESS':emailAddress
@@ -38,7 +38,7 @@ export class InfraStack extends Stack {
     });
     const defineAuthFunction = new NodejsFunction(this, 'DefineAuthFunction', {
       entry: 'functions/passwordless/define-auth-challenge.ts', 
-      handler: 'DefineAuthChallengeTriggerHandler', 
+      handler: 'handler', 
       role: authRole,
       environment: {
         'SES_FROM_ADDRESS':emailAddress
@@ -46,7 +46,7 @@ export class InfraStack extends Stack {
     });
     const postAuthFunction = new NodejsFunction(this, 'PostAuthFunction', {
       entry: 'functions/passwordless/post-authentication.ts', 
-      handler: 'PostAuthenticationTriggerHandler', 
+      handler: 'handler', 
       role: authRole,
       environment: {
         'SES_FROM_ADDRESS':emailAddress
@@ -54,7 +54,7 @@ export class InfraStack extends Stack {
     });
     const verifyAuthFunction = new NodejsFunction(this, 'VerifyAuthFunction', {
       entry: 'functions/passwordless/verify-auth-challenge-response.ts', 
-      handler: 'VerifyAuthChallengeResponseTriggerHandler', 
+      handler: 'handler', 
       role: authRole,
       environment: {
         'SES_FROM_ADDRESS':emailAddress
