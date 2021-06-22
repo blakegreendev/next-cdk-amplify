@@ -1,0 +1,20 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yarn install
+    build:
+      commands:
+        - echo "NEXT_APP_IDENTITY_POOL_ID=$IDENTITY_POOL_ID" >> .env
+        - echo "NEXT_APP_REGION=$REGION" >> .env
+        - echo "NEXT_APP_USER_POOL_CLIENT_ID=$USER_POOL_CLIENT_ID" >> .env
+        - echo "NEXT_APP_USER_POOL_ID=$USER_POOL_ID" >> .env
+        - yarn run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
