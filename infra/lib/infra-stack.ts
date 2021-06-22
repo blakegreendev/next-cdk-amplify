@@ -1,8 +1,7 @@
 import * as amp from "@aws-cdk/aws-amplify";
-import { UserPool, CfnUserPoolClient, CfnIdentityPool } from "@aws-cdk/aws-cognito";
+import { UserPool, CfnUserPoolClient, CfnIdentityPool, AccountRecovery } from "@aws-cdk/aws-cognito";
 import { ManagedPolicy, PolicyStatement, Role, ServicePrincipal } from "@aws-cdk/aws-iam";
 import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs";
-import * as logs from "@aws-cdk/aws-cloudwatch";
 import { Construct, Stack, StackProps, SecretValue, Duration, CfnOutput } from "@aws-cdk/core";
 
 export class InfraStack extends Stack {
@@ -63,9 +62,10 @@ export class InfraStack extends Stack {
     });
     ///////////// Cognito
     // Create user pool
-    const userPool = new UserPool(this, "UserPool", {
+    const userPool = new UserPool(this, "UserPool2", {
       selfSignUpEnabled: true,
-      //signInAliases: {email: true},
+      signInAliases: {email: true},
+      accountRecovery: AccountRecovery.NONE,
       passwordPolicy: {
         requireDigits: false,
         requireLowercase: false,
