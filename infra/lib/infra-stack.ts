@@ -16,7 +16,11 @@ export class InfraStack extends Stack {
       resources: ['*'],
       actions: [
         'ses:SendEmail', 
-        'cognito-idp:AdminUpdateUserAttributes']
+        'cognito-idp:AdminUpdateUserAttributes',
+        'logs:CreateLogGroup',
+        'logs:CreateLogStream',
+        'logs:PutLogEvents'
+      ]
     }))
     // Create lambda functions
     const emailAddress = "blakegreen@msn.com"
